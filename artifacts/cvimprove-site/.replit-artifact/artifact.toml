@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CVImprove"
+description = "A complete static career toolkit for improving resumes, checking ATS compatibility, matching resumes to jobs, building polished resumes, and learning practical job-search strategies."
+version = "1.0.0"
+id = "artifacts/cvimprove-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20191
+
+[services.development]
+run = "pnpm --filter @workspace/cvimprove-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cvimprove-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cvimprove-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20191"
+BASE_PATH = "/"

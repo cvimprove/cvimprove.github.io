@@ -1,0 +1,3 @@
+/* GitHub Pages-friendly stylesheet entry point.
+   The Vite presentation uses src/index.css as its compiled source. */
+@import url("../src/index.css");
